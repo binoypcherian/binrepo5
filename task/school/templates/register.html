@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title signup">Register</div>
+      </div>
+      <div class="form-container">
+        <div class="form-inner">
+          <form action="" method ="POST" class="signup">
+            {% csrf_token %}
+            <div class="field">
+              <input type="text" placeholder="Name" name="user_signup">
+            </div>
+            <div class="field">
+              <input type="password" placeholder="Password" name="password_signup">
+            </div>
+            <div class="field">
+              <input type="password" placeholder="Confirm password" name="password_confirm">
+            </div>
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Register">
+            </div>
+            <div class="signup-link">Go to Login? <a href="/logout">Logout</a></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {% for msg in messages %}
+    <h2>{{msg}}</h2>
+    {% endfor %}
+
+{% endblock %}

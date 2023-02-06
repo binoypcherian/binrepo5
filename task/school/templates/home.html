@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title login">Welcome</div>
+      </div>
+      <div class="form-container">
+        <div class="form-inner">
+          <form action="" class="login">
+            {% if user.is_authenticated %}
+            <div class="field">
+              <br>
+              <h2>{{user.username}}</h2> <br>
+            </div>
+            <div class="field">
+            </div>
+              <div class="signup-link">Logout Here →<a href="/logout">Logout</a><br></div>
+            {% else %}
+              <div class="signup-link">Login Here →<a href="/login">Login</a><br></div>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

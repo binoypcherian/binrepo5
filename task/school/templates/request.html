@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+<br>
+<br>
+</div>
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title signup">Request</div>
+      </div>
+      <div class="form-container">
+        <div class="form-inner">
+          <form action="" method ="POST" class="signup" enctype="multipart/form-data">
+            {% csrf_token %}
+              {{form.as_p}}
+
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Request">
+            </div>
+            <div class="signup-link"><a href="/logout">Logout Here</a></div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    {% for msg in messages %}
+    <h2>{{msg}}</h2>
+    {% endfor %}
+
+{% endblock %}
