@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS only -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <title>Homepage</title>
+    <link rel="stylesheet" href="{%static 'style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div>
+    {% include 'header.html' %}
+    {% include 'navbar.html' %}
+</div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

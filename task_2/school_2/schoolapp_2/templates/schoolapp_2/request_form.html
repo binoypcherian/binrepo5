@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h2>Request Form</h2>
+     <div class="wrapper">
+
+      <div class="form-container">
+        <div class="form-inner">
+  <form method="post" id="studentForm" class="signup" data-branches-url="{% url 'ajax_load_courses' %}" novalidate>
+    {% csrf_token %}
+      
+      {{ form.as_p }}
+              {% if user.is_authenticated %}
+    <div class="field btn">
+      <div class="btn-layer"></div>
+
+      <input type="submit" value="Request">
+
+    </div>
+    <div class="signup-link"><a href="{% url 'request_list' %}">Back</a></div>
+      {% else %}
+       <div class="field btn">
+<!--      <div class="btn-layer"></div>-->
+
+    </div>
+    <div class="signup-link"><a href="{% url 'request_list' %}">Back</a></div>
+        {% endif %}
+  </form>
+                  </div>
+      </div>
+    </div>
+
+    {% for msg in messages %}
+    <h2>{{msg}}</h2>
+    {% endfor %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    $("#id_rdept").change(function () {
+      var url = $("#studentForm").attr("data-branches-url");
+      var collegeId = $(this).val();  
+
+      $.ajax({                      
+        url: url,                    
+        data: {
+          'rdept': collegeId
+        },
+        success: function (data) {  
+          $("#id_rcourse").html(data);
+        }
+      });
+
+    });
+  </script>
+
+
+{% endblock %}

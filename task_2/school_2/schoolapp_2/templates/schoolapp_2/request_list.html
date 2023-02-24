@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="wrapper">
+  <div class="signup-link">
+    <a href="{% url 'request_add' %}">Add New Request</a>
+  </div>
+</div>
+{% endif %}
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Course</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for request in requests %}
+        <tr>
+          <td width="20%">{{ request.rname }}</td>
+          <td width="20%">{{ request.rdept.dname }}</td>
+          <td width="20%">{{ request.rcourse.cname }}</td>
+          <td width="20%">{{ request.purpose }}</td>
+                    {% if user.is_authenticated %}
+            <td><a href="{% url 'request_change' request.pk %}">Edit</a></td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
